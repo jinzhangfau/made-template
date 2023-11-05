@@ -34,7 +34,8 @@ Excel sheet provided by the European Central Bank showing the exchange rate betw
 
 <!-- List of work packages ordered sequentially, each pointing to an issue with more details. -->
 
-1. Explore Datasources #1
-2. Build an Automated Data Pipeline #2
+1. Explore Datasources [#1][i1]
+2. Build an Automated Data Pipeline [#2][i2]
 
-[i1]: https://github.com/jvalue/made-template/issues/1
+[i1]: https://github.com/jinzhangfau/made-template/issues/1
+[i2]: https://github.com/jinzhangfau/made-template/issues/2
