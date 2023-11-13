@@ -64,5 +64,5 @@ engine = create_engine("sqlite:///airports.sqlite")
 # class airport:
 #    __tablename__ = 'airport'
 
-# Write data into the table in sqllite database 
-data.to_sql('airports', engine) 
+# Write data into the table in sqllite database, remove index column
+data.to_sql('airports', engine, index = False) 
