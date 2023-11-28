@@ -1,13 +1,59 @@
 pipeline trainstops {
 
-    TrainstopsExtractor
-         -> TrainstopsTextFileInterpreter
-         -> TrainstopsCSVInterpreter
-         -> TrainstopsTableInterpreter
-         -> TrainstopsLoader;
+    // Valid "Verkehr" values are "FV", "RV", "nur DPN"
+    valuetype Verkehr oftype text {
+        constraints: [ 
+            VerkehrValue,
+            MinLength,
+        ];
+    }
+    constraint VerkehrValue oftype AllowlistConstraint {
+        allowlist: ["FV", "RV", "nur DPN"];
+    }
+
+    // Valid "Laenge", "Breite" values are geographic coordinate system values between and including -90 and 90
+    valuetype Laenge oftype decimal {
+        constraints: [ LBValue ];
+    }
+    valuetype Breite oftype decimal {
+        constraints: [ LBValue ];
+    }
+    constraint LBValue oftype RangeConstraint {
+        lowerBound: -90;
+        lowerBoundInclusive: true;
+        upperBound: 90;
+        upperBoundInclusive: true;
+    }
+
+    // Valid "IFOPT" values follow this pattern: <exactly two characters>:<any amount of numbers>:<any amount of numbers><optionally another colon followed by any amount of numbers>
+    valuetype IFOT oftype text {
+        constraints: [ 
+            IFOTValue,
+            MinLength, 
+        ];
+    }
+    constraint IFOTValue oftype RegexConstraint {
+        regex: /^[a-z]{2}:\d+:\d+(\:\d+)?$/;
+    }
+
+    // Empty cells are considered invalid
+    valuetype NAME oftype text {
+        constraints: [ 
+            MinLength 
+        ];
+    }
+    valuetype Betreiber_Name oftype text {
+        constraints: [ 
+            MinLength 
+        ];
+    }
+
+    constraint MinLength oftype LengthConstraint {
+        minLength: 1;
+    }
 
 
-    block TrainstopsExtractor oftype HttpExtractor{
+    block TrainstopsExtractor oftype HttpExtractor {
         url: "https://download-data.deutschebahn.com/static/datasets/haltestellen/D_Bahnhof_2020_alle.CSV";
     }
 
@@ -25,66 +71,24 @@ pipeline trainstops {
             "IFOPT" oftype text,
             "NAME" oftype text,
             "Verkehr" oftype text,
-            "Laenge" oftype decimal, //不确定类型e.g.8,7531
-            "Breite" oftype decimal, //不确定类型e.g.48,4847
+            "Laenge" oftype decimal, 
+            "Breite" oftype decimal,
             "Betreiber_Name" oftype text,
             "Betreiber_Nr" oftype integer,
-            // "Status" oftype text            
         ];        
     }
 
-   // block StatusColumnDeleter oftype ColumnDeleter {
-   //     delete: [column J];
-   // }
-
-    // Valid "Verkehr" values are "FV", "RV", "nur DPN"
-    valuetype Verkehr oftype text {
-        constraints: [ VerkehrValue ];
-    }
-    constraint VerkehrValue oftype AllowlistConstraint {
-        allowlist: ["FV", "RV", "nur DPN"];
-    }
-
-    // Valid "Laenge", "Breite" values are geographic coordinate system values between and including -90 and 90
-    constraint LaengeValue oftype RangeConstraint {
-        lowerBound: -90;
-        lowerBoundInclusive: true;
-        upperBound: 90;
-        upperBoundInclusive: true;
-    }
-
-    constraint BreiteValue oftype RangeConstraint {
-        lowerBound: -90;
-        lowerBoundInclusive: true;
-        upperBound: 90;
-        upperBoundInclusive: true;
-    }
-
-    // Valid "IFOPT" values follow this pattern: <exactly two characters>:<any amount of numbers>:<any amount of numbers><optionally another colon followed by any amount of numbers>
-    constraint IFOTValue oftype RegexConstraint {
-    //    regex: /^[a-z]{2}$:^[1-9]\d*|0$:^[1-9]\d*|0$^[:]?$/;
-    //    regex: /^[a-z]{2}:[1-9]\d*|0:[1-9]\d*|0[:[1-9]\d*|0]?$/;
-        regex: /^[a-z]{2}:\d+:\d+(\:\d+)?$/;
-    }
-
-    // Empty cells are considered invalid
-    constraint IFOPT oftype LengthConstraint {
-        minLength: 1;
-    }
-    constraint NAME oftype LengthConstraint {
-        minLength: 1;
-    }
-    constraint Verkehr oftype LengthConstraint {
-        minLength: 1;
-    }
-    constraint Betreiber_Name oftype LengthConstraint {
-        minLength: 1;
-    }
 
     block TrainstopsLoader oftype SQLiteLoader { 
         table: "trainstops";
         file: "./trainstops.sqlite";
     }
+
+    TrainstopsExtractor
+        -> TrainstopsTextFileInterpreter
+        -> TrainstopsCSVInterpreter
+        -> TrainstopsTableInterpreter
+        -> TrainstopsLoader;
 
 
 }
