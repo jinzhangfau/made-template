@@ -38,9 +38,9 @@ pipeline trainstops {
    // }
 
     // Valid "Verkehr" values are "FV", "RV", "nur DPN"
-    //valuetype Verkehr oftype text {
-    //    constraints: [ VerkehrValue ];
-    //}
+    valuetype Verkehr oftype text {
+        constraints: [ VerkehrValue ];
+    }
     constraint VerkehrValue oftype AllowlistConstraint {
         allowlist: ["FV", "RV", "nur DPN"];
     }
