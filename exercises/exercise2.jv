@@ -22,12 +22,12 @@ pipeline trainstops {
         columns: [
             "EVA_NR" oftype integer,
             "DS100" oftype text,
-            "IFOPT" oftype text,
-            "NAME" oftype text,
-            "Verkehr" oftype text,
-            "Laenge" oftype decimal, 
-            "Breite" oftype decimal,
-            "Betreiber_Name" oftype text,
+            "IFOPT" oftype IFOT,
+            "NAME" oftype NAMEMin,
+            "Verkehr" oftype Verkehr,
+            "Laenge" oftype LaengeBreite, 
+            "Breite" oftype LaengeBreite,
+            "Betreiber_Name" oftype Betreiber_NameMin,
             "Betreiber_Nr" oftype integer,
         ];        
     }
@@ -54,10 +54,7 @@ constraint VerkehrValue oftype AllowlistConstraint {
 }
 
 // Valid "Laenge", "Breite" values are geographic coordinate system values between and including -90 and 90
-valuetype Laenge oftype decimal {
-    constraints: [ LBValue ];
-}
-valuetype Breite oftype decimal {
+valuetype LaengeBreite oftype decimal {
     constraints: [ LBValue ];
 }
 constraint LBValue oftype RangeConstraint {
@@ -79,12 +76,12 @@ constraint IFOTValue oftype RegexConstraint {
 }
 
 // Empty cells are considered invalid
-valuetype NAME oftype text {
+valuetype NAMEMin oftype text {
     constraints: [ 
         MinLength 
     ];
 }
-valuetype Betreiber_Name oftype text {
+valuetype Betreiber_NameMin oftype text {
     constraints: [ 
         MinLength 
     ];
