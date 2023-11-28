@@ -23,11 +23,11 @@ pipeline trainstops {
             "EVA_NR" oftype integer,
             "DS100" oftype text,
             "IFOPT" oftype IFOT,
-            "NAME" oftype NAMEMin,
+            "NAME" oftype Min,
             "Verkehr" oftype Verkehr,
             "Laenge" oftype LaengeBreite, 
             "Breite" oftype LaengeBreite,
-            "Betreiber_Name" oftype Betreiber_NameMin,
+            "Betreiber_Name" oftype Min,
             "Betreiber_Nr" oftype integer,
         ];        
     }
@@ -76,12 +76,7 @@ constraint IFOTValue oftype RegexConstraint {
 }
 
 // Empty cells are considered invalid
-valuetype NAMEMin oftype text {
-    constraints: [ 
-        MinLength 
-    ];
-}
-valuetype Betreiber_NameMin oftype text {
+valuetype Min oftype text {
     constraints: [ 
         MinLength 
     ];
