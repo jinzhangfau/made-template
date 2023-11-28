@@ -63,7 +63,8 @@ pipeline trainstops {
     // Valid "IFOPT" values follow this pattern: <exactly two characters>:<any amount of numbers>:<any amount of numbers><optionally another colon followed by any amount of numbers>
     constraint IFOTValue oftype RegexConstraint {
     //    regex: /^[a-z]{2}$:^[1-9]\d*|0$:^[1-9]\d*|0$^[:]?$/;
-        regex: /^[a-z]{2}:[1-9]\d*|0:[1-9]\d*|0[:[1-9]\d*|0]?$/;
+    //    regex: /^[a-z]{2}:[1-9]\d*|0:[1-9]\d*|0[:[1-9]\d*|0]?$/;
+        regex: /^[a-z]{2}:\d+:\d+(\:\d+)?$/;
     }
 
     // Empty cells are considered invalid
