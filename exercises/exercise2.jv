@@ -22,12 +22,12 @@ pipeline trainstops {
         columns: [
             "EVA_NR" oftype integer,
             "DS100" oftype text,
-            "IFOPT" oftype IFOT,
-            "NAME" oftype Min,
-            "Verkehr" oftype Verkehr,
-            "Laenge" oftype LaengeBreite, 
-            "Breite" oftype LaengeBreite,
-            "Betreiber_Name" oftype Min,
+            "IFOPT" oftype text,
+            "NAME" oftype text,
+            "Verkehr" oftype text,
+            "Laenge" oftype decimal, 
+            "Breite" oftype decimal,
+            "Betreiber_Name" oftype text,
             "Betreiber_Nr" oftype integer,
         ];        
     }
