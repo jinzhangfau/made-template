@@ -24,7 +24,7 @@ pipeline trainstops {
             "DS100" oftype text,
             "IFOPT" oftype text,
             "NAME" oftype text,
-            "Verkehr" oftype text,
+            "Verkehr" oftype Verkehr,
             "Laenge" oftype decimal, 
             "Breite" oftype decimal,
             "Betreiber_Name" oftype text,
