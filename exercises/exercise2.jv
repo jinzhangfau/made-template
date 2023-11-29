@@ -22,12 +22,12 @@ pipeline trainstops {
         columns: [
             "EVA_NR" oftype integer,
             "DS100" oftype text,
-            "IFOPT" oftype text,
+            "IFOPT" oftype IFOTValidate,
             "NAME" oftype text,
-            "Verkehr" oftype text,
-            "Laenge" oftype decimal, 
-            "Breite" oftype decimal,
-            "Betreiber_Name" oftype text,
+            "Verkehr" oftype VerkehrValidate,
+            "Laenge" oftype LBValidate, 
+            "Breite" oftype LBValidate,
+            "Betreiber_Name" oftype MinValidate,
             "Betreiber_Nr" oftype integer,
         ];        
     }
@@ -83,6 +83,7 @@ valuetype MinValidate oftype text {
 }
 constraint MinLength oftype LengthConstraint {
     minLength: 1;
+    maxLength: 2147483647;
 }
 
 
