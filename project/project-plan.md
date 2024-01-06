@@ -18,17 +18,18 @@ Exchange rates can influence the purchasing power of a currency in terms of inte
 
 <!-- Describe each datasources you plan to use in a section. Use the prefic "DatasourceX" where X is the id of the datasource. -->
 
-### Datasource1: Australian Bureau of Statistics
-* Data URL: https://explore.data.abs.gov.au/vis?tm=visitor%20arrivals&pg=0&df[ds]=ABS_ABS_TOPICS&df[id]=OAD_COUNTRY&df[ag]=ABS&df[vs]=1.0.0&pd=1999-01%2C2023-08&dq=...M&ly[cl]=TIME_PERIOD&ly[rw]=COUNTRY_RESID&ly[rs]=CAT_TRAVELLER
-* Data Type: CSV
-  
-Excel sheet provided by the Australian Bureau of Statistics showing Visitor arrivals and resident returns from selected Countries of Residence/Destinations.
-
-### Datasource2: European Central Bank
+### Datasource1: European Central Bank
 * Data URL: https://data.ecb.europa.eu/data/datasets/EXR/EXR.M.AUD.EUR.SP00.A
 * Data Type: CSV
 
 Excel sheet provided by the European Central Bank showing the exchange rate between euro and Australian dollar over time.
+
+
+### Datasource2: Australian Bureau of Statistics
+* Data URL: https://explore.data.abs.gov.au/vis?tm=visitor%20arrivals&pg=0&df[ds]=ABS_ABS_TOPICS&df[id]=OAD_COUNTRY&df[ag]=ABS&df[vs]=1.0.0&pd=1999-01%2C2023-08&dq=...M&ly[cl]=TIME_PERIOD&ly[rw]=COUNTRY_RESID&ly[rs]=CAT_TRAVELLER
+* Data Type: CSV
+  
+Excel sheet provided by the Australian Bureau of Statistics showing Visitor arrivals and resident returns from selected Countries of Residence/Destinations.
 
 ## Work Packages
 
@@ -36,6 +37,8 @@ Excel sheet provided by the European Central Bank showing the exchange rate betw
 
 1. Explore Datasources [#1][i1]
 2. Build an Automated Data Pipeline [#2][i2]
+3. Analyze Data
+4. Present Result
 
 [i1]: https://github.com/jinzhangfau/made-template/issues/1
 [i2]: https://github.com/jinzhangfau/made-template/issues/2
