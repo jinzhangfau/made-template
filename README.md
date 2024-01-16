@@ -1,42 +1,25 @@
-# Methods of Advanced Data Engineering Template Project
+# The impact of the EUR/AUD currency exchange rate on the travel decisions of Germans visiting Australia
 
-This template project provides some structure for your open data project in the MADE module at FAU.
-This repository contains (a) a data science project that is developed by the student over the course of the semester, and (b) the exercises that are submitted over the course of the semester.
-Before you begin, make sure you have [Python](https://www.python.org/) and [Jayvee](https://github.com/jvalue/jayvee) installed. We will work with [Jupyter notebooks](https://jupyter.org/). The easiest way to do so is to set up [VSCode](https://code.visualstudio.com/) with the [Jupyter extension](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter).
+This project specifically examines the exchange rate dynamics between the Euro (EUR) and the Australian dollar (AUD) alongside the number of German tourists to Australia over twenty years from Jan 2000 to Aug 2023. The objective is to find whether there exists a correlation between the EUR/AUD exchange rate and the travel patterns of German citizens to Australia. If the EUR/AUD exchange rate allows for a stronger purchasing power of the Euro compared to the Australian Dollar, will German individuals be willing to travel more to Australia to fully capitalize on this currency advantage?
 
+To explore this question, the evolution of the exchange rate between EUR and AUD, as well as the statistics regarding German tourist arrivals in Australia will be examined. Subsequently, a comparison and correlation analysis between the exchange rate and tourist numbers is conducted. Based on the analysis within the observed time frame, it can be concluded that the EUR/AUD exchange rate does not have a clear impact on the travel decisions of German tourists to Australia.
 
-## Project Work
-Your data engineering project will run alongside lectures during the semester. We will ask you to regularly submit project work as milestones so you can reasonably pace your work. All project work submissions **must** be placed in the `project` folder.
+## Final report
+Link to final report: https://github.com/jinzhangfau/made-template/blob/main/project/report.ipynb
 
-### Exporting a Jupyter Notebook
-Jupyter Notebooks can be exported using `nbconvert` (`pip install nbconvert`). For example, to export the example notebook to html: `jupyter nbconvert --to html examples/final-report-example.ipynb --embed-images --output final-report.html`
+## Data Sources
 
+Datasets are obtained from open data sources.
 
-## Exercises
-During the semester you will need to complete exercises, sometimes using [Python](https://www.python.org/), sometimes using [Jayvee](https://github.com/jvalue/jayvee). You **must** place your submission in the `exercises` folder in your repository and name them according to their number from one to five: `exercise<number from 1-5>.<jv or py>`.
+#### Datasource 1: Exchange Rate EUR/AUD 
 
-In regular intervalls, exercises will be given as homework to complete during the semester. We will divide you into two groups, one completing an exercise in Jayvee, the other in Python, switching each exercise. Details and deadlines will be discussed in the lecture, also see the [course schedule](https://made.uni1.de/). At the end of the semester, you will therefore have the following files in your repository:
+Data URL: https://data.ecb.europa.eu/data/datasets/EXR/EXR.M.AUD.EUR.SP00.A 
 
-1. `./exercises/exercise1.jv` or `./exercises/exercise1.py`
-2. `./exercises/exercise2.jv` or `./exercises/exercise2.py`
-3. `./exercises/exercise3.jv` or `./exercises/exercise3.py`
-4. `./exercises/exercise4.jv` or `./exercises/exercise4.py`
-5. `./exercises/exercise5.jv` or `./exercises/exercise5.py`
+It is provided by the European Central Bank showing the exchange rate between euro and Australian dollar over time.
 
-### Exercise Feedback
-We provide automated exercise feedback using a GitHub action (that is defined in `.github/workflows/exercise-feedback.yml`). 
+#### Datasource 2: Visitor arrivals and resident returns (in Australia) 
 
-To view your exercise feedback, navigate to Actions -> Exercise Feedback in your repository.
+Data URL: https://explore.data.abs.gov.au/vis?tm=visitor%20arrivals&pg=0&df%5Bds%5D=ABS_ABS_TOPICS&df%5Bid%5D=OAD_COUNTRY&df%5Bag%5D=ABS&df%5Bvs%5D=1.0.0&pd=2000-01%2C2023-08&dq=...M&ly%5Bcl%5D=TIME_PERIOD&ly%5Brw%5D=COUNTRY_RESID&ly%5Brs%5D=CAT_TRAVELLER 
 
-The exercise feedback is executed whenever you make a change in files in the `exercise` folder and push your local changes to the repository on GitHub. To see the feedback, open the latest GitHub Action run, open the `exercise-feedback` job and `Exercise Feedback` step. You should see command line output that contains output like this:
+It is provided by the Australian Bureau of Statistics showing Visitor arrivals and resident returns from selected Countries of Residence/Destinations.
 
-```sh
-Found exercises/exercise1.jv, executing model...
-Found output file airports.sqlite, grading...
-Grading Exercise 1
-	Overall points 17 of 17
-	---
-	By category:
-		Shape: 4 of 4
-		Types: 13 of 13
-```
