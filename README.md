@@ -7,6 +7,9 @@ To explore this question, the evolution of the exchange rate between EUR and AUD
 ## Final report
 Link to final report: https://github.com/jinzhangfau/made-template/blob/main/project/report.ipynb
 
+## Slides and presentation
+File "slides" and "presentation-video" under project folder https://github.com/jinzhangfau/made-template/blob/main/project
+
 ## Data Sources
 
 Datasets are obtained from open data sources.
